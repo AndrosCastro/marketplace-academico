@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+
+  --color-tinta: #10231c;
+  --color-bosque-50: #effaf3;
+  --color-bosque-100: #d8f3e2;
+  --color-bosque-200: #b3e6c8;
+  --color-bosque-300: #80d2a6;
+  --color-bosque-400: #4cb780;
+  --color-bosque-500: #2a9b64;
+  --color-bosque-600: #1c7d50;
+  --color-bosque-700: #186442;
+  --color-bosque-800: #165037;
+  --color-bosque-900: #12422e;
+  --color-bosque-950: #08251a;
+  --color-mango-300: #ffd27a;
+  --color-mango-400: #ffbd45;
+  --color-mango-500: #f9a01b;
+  --color-papel: #fbfaf6;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-papel text-tinta antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-bosque-500;
+  }
+}
+
+@utility btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition
+      disabled:cursor-not-allowed disabled:opacity-60;
+  }
+@utility btn-primario {
+    @apply btn bg-bosque-700 text-white shadow-sm hover:bg-bosque-800 active:translate-y-px;
+  }
+@utility btn-acento {
+    @apply btn bg-mango-400 text-tinta shadow-sm hover:bg-mango-500;
+  }
+@utility btn-secundario {
+    @apply btn border border-tinta/15 bg-white text-tinta hover:border-tinta/30 hover:bg-bosque-50;
+  }
+@utility btn-peligro {
+    @apply btn border border-red-200 bg-red-50 text-red-700 hover:bg-red-100;
+  }
+@utility campo {
+    @apply w-full rounded-xl border border-tinta/15 bg-white px-3.5 py-2.5 text-sm text-tinta shadow-xs
+      placeholder:text-tinta/40 focus:border-bosque-500 focus:outline-none focus:ring-4 focus:ring-bosque-500/15;
+  }
+@utility campo-error {
+    @apply border-red-400 focus:border-red-500 focus:ring-red-500/15;
+  }
+@utility etiqueta {
+    @apply mb-1.5 block text-sm font-semibold text-tinta/80;
+  }
+@utility tarjeta {
+    @apply rounded-2xl border border-tinta/10 bg-white shadow-[0_1px_0_rgba(16,35,28,0.04),0_8px_24px_-12px_rgba(16,35,28,0.12)];
+  }
+@utility chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+
+.fondo-grano {
+  background-image: radial-gradient(circle at 1px 1px, rgba(16, 35, 28, 0.07) 1px, transparent 0);
+  background-size: 22px 22px;
+}

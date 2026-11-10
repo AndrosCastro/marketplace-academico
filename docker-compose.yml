@@ -1,0 +1,39 @@
+# Entorno local: base de datos PostgreSQL (y opcionalmente la app en contenedor).
+# Uso:  docker compose up -d db        -> solo la base de datos
+#       docker compose up --build       -> base de datos + aplicación
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: marketplace_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: marketplace
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-marketplace_local_dev}
+      POSTGRES_DB: marketplace
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marketplace"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: marketplace_app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://marketplace:${POSTGRES_PASSWORD:-marketplace_local_dev}@db:5432/marketplace
+      DATABASE_URL_UNPOOLED: postgresql://marketplace:${POSTGRES_PASSWORD:-marketplace_local_dev}@db:5432/marketplace
+      SESSION_SECRET: ${SESSION_SECRET:-cambia-esto-por-un-secreto-largo-de-produccion-0123456789}
+      ALLOWED_EMAIL_DOMAINS: ${ALLOWED_EMAIL_DOMAINS:-}
+    ports:
+      - "3000:3000"
+    profiles: ["full"]
+
+volumes:
+  pgdata:
