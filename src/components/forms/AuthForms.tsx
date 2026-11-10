@@ -28,22 +28,24 @@ export function FormLogin({ next }: { next?: string }) {
 
 export function FormRegistro({ dominios }: { dominios: string[] }) {
   const [st, accion] = useActionState(registrar, undefined);
+  // autoComplete="off": evita la lista de sugerencias de autocompletado, que hace cerrarse
+  // Brave 1.99 en Windows (falla de Brave en UIAutomationCore al mostrar sugerencias).
   return (
-    <form action={accion} className="space-y-4" noValidate>
+    <form action={accion} className="space-y-4" noValidate autoComplete="off">
       {st?.error && <Aviso tipo="error">{st.error}</Aviso>}
-      <Campo nombre="nombre" etiqueta="Nombre completo" autoComplete="name" required maxLength={100} valor={st?.valores?.nombre} error={st?.campos?.nombre} />
+      <Campo nombre="nombre" etiqueta="Nombre completo" autoComplete="off" required maxLength={100} valor={st?.valores?.nombre} error={st?.campos?.nombre} />
       <Campo
         nombre="correo"
         etiqueta="Correo"
         tipo="email"
-        autoComplete="email"
+        autoComplete="off"
         required
         maxLength={150}
         valor={st?.valores?.correo}
         error={st?.campos?.correo}
         ayuda={dominios.length ? `Solo correos institucionales: ${dominios.map((d) => "@" + d).join(", ")}` : "Tu correo nunca se muestra públicamente."}
       />
-      <Campo nombre="carrera" etiqueta="Carrera" maxLength={100} placeholder="Ej. Ingeniería en Computación" valor={st?.valores?.carrera} error={st?.campos?.carrera} />
+      <Campo nombre="carrera" etiqueta="Carrera" autoComplete="off" maxLength={100} placeholder="Ej. Ingeniería en Computación" valor={st?.valores?.carrera} error={st?.campos?.carrera} />
       <div className="grid gap-4 sm:grid-cols-2">
         <Campo
           nombre="contrasenia"
