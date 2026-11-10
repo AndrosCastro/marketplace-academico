@@ -21,3 +21,4 @@ credenciales-vercel.txt
 
 .vercel
 .env*
+!.env.example
