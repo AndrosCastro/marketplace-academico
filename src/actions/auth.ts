@@ -11,12 +11,13 @@ import {
   registrarIntento,
   ipCliente,
   bitacora,
-  limiteExcedido,
   usuarioActual,
 } from "@/lib/sesion";
 import { type EstadoForm, rutaSegura, valoresDe, str } from "@/lib/form";
 
 const COSTO_BCRYPT = 12;
+// Cuentas nuevas permitidas por red y por hora (configurable; en una universidad muchos comparten la misma red).
+const MAX_REGISTROS_HORA = Math.max(1, Number(process.env.MAX_REGISTROS_HORA) || 30);
 // Hash ficticio para igualar el tiempo de respuesta cuando el correo no existe (evita enumerar cuentas).
 const HASH_FICTICIO = "$2b$12$CnojZToP3EH0pcI0zbHJA.hAE.UJFUvfLhUnsoxwMvklxAjhZD0/6";
 
@@ -31,8 +32,13 @@ export async function registrar(_: EstadoForm, fd: FormData): Promise<EstadoForm
   });
   if (!r.success) return { campos: erroresDeCampo(r.error), valores };
 
+  // Límite anti-abuso: solo cuentan las cuentas creadas con éxito (no los intentos con errores).
   const ip = await ipCliente();
-  if (await limiteExcedido(`registro:${ip}`, 10, 60 * 60 * 1000)) {
+  const claveRegistro = `registro:${ip}`;
+  const creadasUltimaHora = await prisma.intentoAcceso.count({
+    where: { clave: claveRegistro, fecha: { gte: new Date(Date.now() - 60 * 60 * 1000) } },
+  });
+  if (creadasUltimaHora >= MAX_REGISTROS_HORA) {
     return { error: "Demasiados registros desde esta red. Intenta más tarde.", valores };
   }
   if (!dominioPermitido(r.data.correo)) {
@@ -48,6 +54,7 @@ export async function registrar(_: EstadoForm, fd: FormData): Promise<EstadoForm
       data: { nombre: r.data.nombre, correo: r.data.correo, carrera: r.data.carrera, contrasenia: hash },
     });
     await bitacora(u.id, "REGISTRO");
+    await prisma.intentoAcceso.create({ data: { clave: claveRegistro, exitoso: true } });
   } catch {
     return { campos: { correo: "Este correo ya está registrado." }, valores };
   }
