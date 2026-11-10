@@ -20,6 +20,95 @@
   --color-mango-400: #ffbd45;
   --color-mango-500: #f9a01b;
   --color-papel: #fbfaf6;
+  --color-superficie: #ffffff;
+  --color-oscuro: #10231c; /* tinta fija para texto sobre amarillo */
+}
+
+
+/* ---------------------------------------------------------------
+   Modo oscuro: se redefinen las variables de color. Se activa con
+   data-theme="dark" en <html>, o automáticamente si el sistema está
+   en oscuro y el usuario no eligió "claro".
+   --------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+  --grano: rgba(16, 35, 28, 0.07);
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --grano: rgba(255, 255, 255, 0.045);
+  --color-papel: #0b1310;
+  --color-superficie: #131d18;
+  --color-tinta: #e3ece7;
+  --color-bosque-50: #12221a;
+  --color-bosque-100: #173226;
+  --color-bosque-200: #21483a;
+  --color-bosque-300: #2d6b4d;
+  --color-bosque-700: #34a46d;
+  --color-bosque-800: #8fe0b5;
+  --color-amber-100: #3b2f10;
+  --color-amber-800: #fcd34d;
+  --color-sky-50: #0f2230;
+  --color-sky-100: #13304a;
+  --color-sky-200: #1d4a6b;
+  --color-sky-800: #93c5fd;
+  --color-sky-900: #bfdbfe;
+  --color-violet-50: #1d1631;
+  --color-violet-100: #2b1f4a;
+  --color-violet-200: #46337a;
+  --color-violet-800: #c4b5fd;
+  --color-violet-900: #ddd6fe;
+  --color-teal-100: #0f3533;
+  --color-teal-800: #5eead4;
+  --color-red-50: #2a1214;
+  --color-red-100: #3d1619;
+  --color-red-200: #5c2226;
+  --color-red-600: #f87171;
+  --color-red-700: #fca5a5;
+  --color-red-800: #fecaca;
+  --color-zinc-50: #151d19;
+  --color-zinc-100: #1c2621;
+  --color-zinc-200: #27322c;
+  --color-zinc-700: #c4cdc8;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  color-scheme: dark;
+  --grano: rgba(255, 255, 255, 0.045);
+  --color-papel: #0b1310;
+  --color-superficie: #131d18;
+  --color-tinta: #e3ece7;
+  --color-bosque-50: #12221a;
+  --color-bosque-100: #173226;
+  --color-bosque-200: #21483a;
+  --color-bosque-300: #2d6b4d;
+  --color-bosque-700: #34a46d;
+  --color-bosque-800: #8fe0b5;
+  --color-amber-100: #3b2f10;
+  --color-amber-800: #fcd34d;
+  --color-sky-50: #0f2230;
+  --color-sky-100: #13304a;
+  --color-sky-200: #1d4a6b;
+  --color-sky-800: #93c5fd;
+  --color-sky-900: #bfdbfe;
+  --color-violet-50: #1d1631;
+  --color-violet-100: #2b1f4a;
+  --color-violet-200: #46337a;
+  --color-violet-800: #c4b5fd;
+  --color-violet-900: #ddd6fe;
+  --color-teal-100: #0f3533;
+  --color-teal-800: #5eead4;
+  --color-red-50: #2a1214;
+  --color-red-100: #3d1619;
+  --color-red-200: #5c2226;
+  --color-red-600: #f87171;
+  --color-red-700: #fca5a5;
+  --color-red-800: #fecaca;
+  --color-zinc-50: #151d19;
+  --color-zinc-100: #1c2621;
+  --color-zinc-200: #27322c;
+  --color-zinc-700: #c4cdc8;
+  }
 }
 
 @layer base {
@@ -39,19 +128,19 @@
       disabled:cursor-not-allowed disabled:opacity-60;
   }
 @utility btn-primario {
-    @apply btn bg-bosque-700 text-white shadow-sm hover:bg-bosque-800 active:translate-y-px;
+    @apply btn bg-bosque-700 text-white shadow-sm hover:bg-bosque-600 active:translate-y-px;
   }
 @utility btn-acento {
-    @apply btn bg-mango-400 text-tinta shadow-sm hover:bg-mango-500;
+    @apply btn bg-mango-400 text-oscuro shadow-sm hover:bg-mango-500;
   }
 @utility btn-secundario {
-    @apply btn border border-tinta/15 bg-white text-tinta hover:border-tinta/30 hover:bg-bosque-50;
+    @apply btn border border-tinta/15 bg-superficie text-tinta hover:border-tinta/30 hover:bg-bosque-50;
   }
 @utility btn-peligro {
     @apply btn border border-red-200 bg-red-50 text-red-700 hover:bg-red-100;
   }
 @utility campo {
-    @apply w-full rounded-xl border border-tinta/15 bg-white px-3.5 py-2.5 text-sm text-tinta shadow-xs
+    @apply w-full rounded-xl border border-tinta/15 bg-superficie px-3.5 py-2.5 text-sm text-tinta shadow-xs
       placeholder:text-tinta/40 focus:border-bosque-500 focus:outline-none focus:ring-4 focus:ring-bosque-500/15;
   }
 @utility campo-error {
@@ -61,13 +150,13 @@
     @apply mb-1.5 block text-sm font-semibold text-tinta/80;
   }
 @utility tarjeta {
-    @apply rounded-2xl border border-tinta/10 bg-white shadow-[0_1px_0_rgba(16,35,28,0.04),0_8px_24px_-12px_rgba(16,35,28,0.12)];
+    @apply rounded-2xl border border-tinta/10 bg-superficie shadow-[0_1px_0_rgba(16,35,28,0.04),0_8px_24px_-12px_rgba(16,35,28,0.12)];
   }
 @utility chip {
     @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold;
   }
 
 .fondo-grano {
-  background-image: radial-gradient(circle at 1px 1px, rgba(16, 35, 28, 0.07) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, var(--grano) 1px, transparent 0);
   background-size: 22px 22px;
 }

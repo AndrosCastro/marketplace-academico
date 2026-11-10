@@ -3,6 +3,8 @@ import { usuarioActual } from "@/lib/sesion";
 import { prisma } from "@/lib/db";
 import { cerrarSesion } from "@/actions/auth";
 import { Avatar } from "./ui";
+import { SelectorTema } from "./SelectorTema";
+import { cookies } from "next/headers";
 
 async function pendientes(usuarioId: string) {
   // Solicitudes que esperan una acción del usuario (aviso en el menú)
@@ -16,6 +18,8 @@ async function pendientes(usuarioId: string) {
 export async function Navbar() {
   const u = await usuarioActual();
   const n = u ? await pendientes(u.id) : 0;
+  const t = (await cookies()).get("tema")?.value;
+  const tema = t === "claro" || t === "oscuro" ? t : "sistema";
 
   const enlaces = u
     ? [
@@ -35,7 +39,7 @@ export async function Navbar() {
           </span>
           <span className="leading-tight">
             <span className="block font-display text-[17px] font-semibold">Marketplace</span>
-            <span className="-mt-0.5 block text-[11px] font-bold tracking-[0.16em] text-bosque-600 uppercase">Académico</span>
+            <span className="-mt-0.5 block text-[11px] font-bold tracking-[0.16em] text-bosque-700 uppercase">Académico</span>
           </span>
         </Link>
 
@@ -44,13 +48,14 @@ export async function Navbar() {
             <Link key={e.href} href={e.href} className="relative rounded-lg px-3 py-2 text-sm font-semibold text-tinta/75 hover:bg-bosque-50 hover:text-tinta">
               {e.txt}
               {"badge" in e && e.badge ? (
-                <span className="ml-1.5 rounded-full bg-mango-400 px-1.5 py-0.5 text-[10px] font-bold text-tinta">{e.badge}</span>
+                <span className="ml-1.5 rounded-full bg-mango-400 px-1.5 py-0.5 text-[10px] font-bold text-oscuro">{e.badge}</span>
               ) : null}
             </Link>
           ))}
         </div>
 
         <div className="flex items-center gap-2">
+          <SelectorTema inicial={tema} />
           {u ? (
             <>
               <Link href="/servicios/nuevo" className="btn-acento hidden sm:inline-flex">

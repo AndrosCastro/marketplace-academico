@@ -98,6 +98,12 @@ async function main() {
   });
   console.log(`✔ administrador: ${adminCorreo}`);
 
+  // SEED_DEMO="false" crea solo categorías y administrador (sin estudiantes ficticios).
+  if (process.env.SEED_DEMO === "false") {
+    console.log("ℹ SEED_DEMO=false: no se crean estudiantes ni servicios de demostración.");
+    return;
+  }
+
   if (await prisma.usuario.findUnique({ where: { correo: ESTUDIANTES[0]!.correo } })) {
     console.log("ℹ Los datos de demostración ya existen; no se duplican.");
     return;

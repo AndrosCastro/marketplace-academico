@@ -118,7 +118,7 @@ export default async function DetalleSolicitud({
                         <span className={`h-1 flex-1 ${i === 0 ? "invisible" : hecho ? "bg-bosque-500" : "bg-tinta/10"}`} />
                         <span
                           className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-xs font-bold ${
-                            i === idxFlujo ? "bg-mango-400 text-tinta ring-4 ring-mango-300/40" : hecho ? "bg-bosque-600 text-white" : "bg-tinta/10 text-tinta/50"
+                            i === idxFlujo ? "bg-mango-400 text-oscuro ring-4 ring-mango-300/40" : hecho ? "bg-bosque-600 text-white" : "bg-tinta/10 text-tinta/50"
                           }`}
                         >
                           {hecho && i !== idxFlujo ? "✓" : i + 1}
@@ -135,7 +135,7 @@ export default async function DetalleSolicitud({
               <p className="mt-6 rounded-xl bg-zinc-100 px-4 py-3 text-sm font-medium text-zinc-700">Estado final: {etiquetaEstado(estado)}</p>
             )}
 
-            <div className="mt-6 rounded-xl bg-bosque-50 px-4 py-3 text-sm font-medium text-bosque-900">👉 {guia[estado][rol]}</div>
+            <div className="mt-6 rounded-xl bg-bosque-50 px-4 py-3 text-sm font-medium text-bosque-800">👉 {guia[estado][rol]}</div>
 
             {s.mensajeInicial && (
               <div className="mt-5">
@@ -162,7 +162,7 @@ export default async function DetalleSolicitud({
                 const mio = m.remitenteId === u.id;
                 return (
                   <div key={m.id} className={`flex ${mio ? "justify-end" : "justify-start"}`}>
-                    <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm shadow-xs ${mio ? "rounded-br-sm bg-bosque-700 text-white" : "rounded-bl-sm bg-white ring-1 ring-tinta/10"}`}>
+                    <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm shadow-xs ${mio ? "rounded-br-sm bg-bosque-700 text-white" : "rounded-bl-sm bg-superficie ring-1 ring-tinta/10"}`}>
                       {!mio && <p className="mb-0.5 text-xs font-bold text-bosque-700">{otra.nombre}</p>}
                       {m.contenido && <p className="whitespace-pre-line break-words">{m.contenido}</p>}
                       {m.archivoNombre && (
@@ -180,7 +180,7 @@ export default async function DetalleSolicitud({
                 );
               })}
             </div>
-            <div className="border-t border-tinta/10 bg-white p-4">
+            <div className="border-t border-tinta/10 bg-superficie p-4">
               {chatHabilitado(estado) ? (
                 <FormChat solicitudId={s.id} accept={ACCEPT_ATTR} />
               ) : (

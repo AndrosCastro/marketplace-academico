@@ -6,7 +6,7 @@ export function Avatar({ id, nombre, tam = 40 }: { id: string; nombre: string; t
   return (
     <span
       aria-hidden
-      className="inline-flex shrink-0 items-center justify-center rounded-full font-bold text-white ring-2 ring-white"
+      className="inline-flex shrink-0 items-center justify-center rounded-full font-bold text-white ring-2 ring-superficie"
       style={{ width: tam, height: tam, background: colorDe(id), fontSize: tam * 0.38 }}
     >
       {iniciales(nombre)}
@@ -69,7 +69,7 @@ export function TarjetaServicio({ s }: { s: ServicioTarjeta }) {
       className="tarjeta group flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:border-bosque-300 hover:shadow-lg"
     >
       <div className="flex items-center justify-between gap-2 border-b border-tinta/5 bg-bosque-50/60 px-5 py-3">
-        <span className="chip bg-white text-bosque-800 ring-1 ring-bosque-200">
+        <span className="chip bg-superficie text-bosque-800 ring-1 ring-bosque-200">
           <span aria-hidden>{s.categoria.icono}</span> {s.categoria.nombre}
         </span>
         {s.modalidad && (
@@ -96,7 +96,7 @@ export function TarjetaServicio({ s }: { s: ServicioTarjeta }) {
 
 export function Aviso({ tipo = "ok", children }: { tipo?: "ok" | "error" | "info"; children: React.ReactNode }) {
   const c = {
-    ok: "border-bosque-200 bg-bosque-50 text-bosque-900",
+    ok: "border-bosque-200 bg-bosque-50 text-bosque-800",
     error: "border-red-200 bg-red-50 text-red-800",
     info: "border-sky-200 bg-sky-50 text-sky-900",
   }[tipo];
@@ -150,7 +150,7 @@ export function Paginacion({ pagina, total, porPagina, base }: { pagina: number;
 export function Titulo({ sup, children, desc }: { sup?: string; children: React.ReactNode; desc?: React.ReactNode }) {
   return (
     <header className="mb-8">
-      {sup && <p className="mb-1 text-xs font-bold tracking-[0.18em] text-bosque-600 uppercase">{sup}</p>}
+      {sup && <p className="mb-1 text-xs font-bold tracking-[0.18em] text-bosque-700 uppercase">{sup}</p>}
       <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">{children}</h1>
       {desc && <p className="mt-2 max-w-2xl text-tinta/65">{desc}</p>}
     </header>

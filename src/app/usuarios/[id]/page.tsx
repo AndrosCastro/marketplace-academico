@@ -60,7 +60,7 @@ export default async function PerfilPublico({
               .map((h) => h.trim())
               .filter(Boolean)
               .map((h) => (
-                <span key={h} className="chip bg-white text-bosque-800 ring-1 ring-bosque-200">
+                <span key={h} className="chip bg-superficie text-bosque-800 ring-1 ring-bosque-200">
                   {h}
                 </span>
               ))}

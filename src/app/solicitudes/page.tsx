@@ -116,7 +116,7 @@ export default async function Solicitudes({ searchParams }: { searchParams: Prom
                       {hace(s.fechaUltimoCambio)} · 💬 {s._count.mensajes}
                     </span>
                   </div>
-                  {meToca && <span className="chip bg-mango-400 text-tinta">Requiere tu acción</span>}
+                  {meToca && <span className="chip bg-mango-400 text-oscuro">Requiere tu acción</span>}
                 </Link>
               </li>
             );

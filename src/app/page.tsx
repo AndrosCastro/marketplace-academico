@@ -93,9 +93,9 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<R
           <div className="grid grid-cols-2 gap-4 self-center">
             {[
               ["95%", "considera útil la plataforma", "bg-bosque-700 text-white"],
-              ["85%", "revisa reseñas antes de contratar", "bg-white"],
-              ["80%", "nunca había contratado una tutoría formal", "bg-white"],
-              ["95%", "la usaría en su universidad", "bg-mango-400"],
+              ["85%", "revisa reseñas antes de contratar", "bg-superficie"],
+              ["80%", "nunca había contratado una tutoría formal", "bg-superficie"],
+              ["95%", "la usaría en su universidad", "bg-mango-400 text-oscuro"],
             ].map(([n, t, c], i) => (
               <div key={i} className={`tarjeta p-5 ${c} ${i % 2 ? "translate-y-6" : ""}`}>
                 <p className="font-display text-4xl font-semibold">{n}</p>
@@ -108,7 +108,7 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<R
       </section>
 
       {/* CIFRAS EN VIVO */}
-      <section className="border-y border-tinta/10 bg-white">
+      <section className="border-y border-tinta/10 bg-superficie">
         <div className="mx-auto grid max-w-6xl grid-cols-3 divide-x divide-tinta/10 px-4 sm:px-6">
           {[
             [totales[0], "servicios activos"],
@@ -162,7 +162,7 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<R
 
       {/* CÓMO FUNCIONA */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="tarjeta overflow-hidden bg-bosque-900 p-8 text-white sm:p-12">
+        <div className="tarjeta overflow-hidden bg-bosque-950 p-8 text-white sm:p-12">
           <h2 className="font-display text-3xl font-semibold">Cómo funciona</h2>
           <p className="mt-2 max-w-xl text-white/70">Un proceso claro y seguro de principio a fin. Sin pago confirmado, el trabajo no inicia.</p>
           <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

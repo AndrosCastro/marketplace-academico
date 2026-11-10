@@ -75,7 +75,7 @@ export default async function MisServicios({ searchParams }: { searchParams: Pro
                   </td>
                   <td className="px-3 py-4">
                     {s._count.solicitudes}
-                    {s.solicitudes.length > 0 && <span className="chip ml-2 bg-mango-300 text-tinta">{s.solicitudes.length} nuevas</span>}
+                    {s.solicitudes.length > 0 && <span className="chip ml-2 bg-mango-300 text-oscuro">{s.solicitudes.length} nuevas</span>}
                   </td>
                   <td className="px-5 py-4">
                     <div className="flex justify-end gap-2">
