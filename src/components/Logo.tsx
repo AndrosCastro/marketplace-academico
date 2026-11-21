@@ -29,7 +29,7 @@ export function LogoStudia({ compacto = false }: { compacto?: boolean }) {
       <span className="leading-none">
         <span className="block font-display text-[24px] font-extrabold tracking-[-0.02em] text-tinta">studia</span>
         {!compacto && (
-          <span className="mt-0.5 block text-[9.5px] font-semibold tracking-[0.16em] text-tinta/60 uppercase">Marketplace Académico</span>
+          <span className="mt-0.5 hidden text-[9.5px] font-semibold tracking-[0.16em] text-tinta/60 uppercase sm:block">Marketplace Académico</span>
         )}
       </span>
     </span>
