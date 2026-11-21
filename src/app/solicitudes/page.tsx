@@ -45,7 +45,7 @@ export default async function Solicitudes({ searchParams }: { searchParams: Prom
     return (
       <Link
         href={`/solicitudes${q.size ? "?" + q : ""}`}
-        className={`rounded-lg px-3.5 py-2 text-sm font-semibold ${rol === r ? "bg-bosque-700 text-white" : "text-tinta/70 hover:bg-bosque-50"}`}
+        className={`rounded-lg px-3.5 py-2 text-sm font-semibold ${rol === r ? "bg-bosque-700 text-sobre-marca" : "text-tinta/70 hover:bg-bosque-50"}`}
       >
         {txt}
       </Link>

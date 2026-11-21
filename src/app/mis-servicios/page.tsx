@@ -69,7 +69,7 @@ export default async function MisServicios({ searchParams }: { searchParams: Pro
                   </td>
                   <td className="px-3 py-4 font-semibold">{lempiras(s.precio)}</td>
                   <td className="px-3 py-4">
-                    <span className={`chip ${s.estado === "ACTIVO" ? "bg-bosque-100 text-bosque-800" : "bg-zinc-200 text-zinc-700"}`}>
+                    <span className={`chip ${s.estado === "ACTIVO" ? "bg-exito-100 text-exito-800" : "bg-zinc-200 text-zinc-700"}`}>
                       {s.estado === "ACTIVO" ? "Activo" : "Retirado"}
                     </span>
                   </td>

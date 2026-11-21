@@ -139,7 +139,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<Re
                   <td className="px-3 py-3">{c.rol === "ADMIN" ? "Admin" : "Estudiante"}</td>
                   <td className="px-3 py-3">{c._count.servicios}</td>
                   <td className="px-3 py-3">
-                    <span className={`chip ${c.activo ? "bg-bosque-100 text-bosque-800" : "bg-red-100 text-red-700"}`}>{c.activo ? "Activa" : "Suspendida"}</span>
+                    <span className={`chip ${c.activo ? "bg-exito-100 text-exito-800" : "bg-red-100 text-red-700"}`}>{c.activo ? "Activa" : "Suspendida"}</span>
                   </td>
                   <td className="px-6 py-3 text-right">
                     {c.rol !== "ADMIN" && (
@@ -166,7 +166,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<Re
       <section className="tarjeta mt-6 p-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h2 className="font-display text-xl font-semibold">Bitácora de seguridad</h2>
-          <span className={`chip ${fallidos24h > 10 ? "bg-red-100 text-red-700" : "bg-bosque-100 text-bosque-800"}`}>{fallidos24h} accesos fallidos en 24 h</span>
+          <span className={`chip ${fallidos24h > 10 ? "bg-red-100 text-red-700" : "bg-exito-100 text-exito-800"}`}>{fallidos24h} accesos fallidos en 24 h</span>
         </div>
         <ul className="mt-4 divide-y divide-tinta/5 font-mono text-xs">
           {eventos.map((e) => (

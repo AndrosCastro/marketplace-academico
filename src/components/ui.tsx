@@ -33,7 +33,7 @@ const COLORES_ESTADO: Record<Estado, string> = {
   ACEPTADA: "bg-sky-100 text-sky-800",
   PAGO_CONFIRMADO: "bg-violet-100 text-violet-800",
   ENTREGADA: "bg-teal-100 text-teal-800",
-  COMPLETADA: "bg-bosque-100 text-bosque-800",
+  COMPLETADA: "bg-exito-100 text-exito-800",
   RECHAZADA: "bg-red-100 text-red-700",
   CANCELADA: "bg-zinc-200 text-zinc-700",
 };
@@ -96,7 +96,7 @@ export function TarjetaServicio({ s }: { s: ServicioTarjeta }) {
 
 export function Aviso({ tipo = "ok", children }: { tipo?: "ok" | "error" | "info"; children: React.ReactNode }) {
   const c = {
-    ok: "border-bosque-200 bg-bosque-50 text-bosque-800",
+    ok: "border-exito-200 bg-exito-50 text-exito-800",
     error: "border-red-200 bg-red-50 text-red-800",
     info: "border-sky-200 bg-sky-50 text-sky-900",
   }[tipo];

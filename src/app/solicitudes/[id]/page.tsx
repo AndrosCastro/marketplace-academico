@@ -135,7 +135,7 @@ export default async function DetalleSolicitud({
               <p className="mt-6 rounded-xl bg-zinc-100 px-4 py-3 text-sm font-medium text-zinc-700">Estado final: {etiquetaEstado(estado)}</p>
             )}
 
-            <div className="mt-6 rounded-xl bg-bosque-50 px-4 py-3 text-sm font-medium text-bosque-800">👉 {guia[estado][rol]}</div>
+            <div className="mt-6 rounded-xl bg-mango-300/25 px-4 py-3 text-sm font-medium text-tinta">👉 {guia[estado][rol]}</div>
 
             {s.mensajeInicial && (
               <div className="mt-5">
@@ -162,19 +162,19 @@ export default async function DetalleSolicitud({
                 const mio = m.remitenteId === u.id;
                 return (
                   <div key={m.id} className={`flex ${mio ? "justify-end" : "justify-start"}`}>
-                    <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm shadow-xs ${mio ? "rounded-br-sm bg-bosque-700 text-white" : "rounded-bl-sm bg-superficie ring-1 ring-tinta/10"}`}>
+                    <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm shadow-xs ${mio ? "rounded-br-sm bg-bosque-700 text-sobre-marca" : "rounded-bl-sm bg-superficie ring-1 ring-tinta/10"}`}>
                       {!mio && <p className="mb-0.5 text-xs font-bold text-bosque-700">{otra.nombre}</p>}
                       {m.contenido && <p className="whitespace-pre-line break-words">{m.contenido}</p>}
                       {m.archivoNombre && (
                         <a
                           href={`/api/archivos/${m.id}`}
-                          className={`mt-1.5 flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold ${mio ? "bg-white/15 hover:bg-white/25" : "bg-bosque-50 hover:bg-bosque-100"}`}
+                          className={`mt-1.5 flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold ${mio ? "bg-sobre-marca/15 hover:bg-sobre-marca/25" : "bg-bosque-50 hover:bg-bosque-100"}`}
                         >
                           📄 <span className="truncate">{m.archivoNombre}</span>
                           <span className="opacity-70">{tamanoArchivo(m.archivoTamano ?? 0)}</span>
                         </a>
                       )}
-                      <p className={`mt-1 text-right text-[10px] ${mio ? "text-white/60" : "text-tinta/45"}`}>{fechaHora(m.fechaEnvio)}</p>
+                      <p className={`mt-1 text-right text-[10px] ${mio ? "text-sobre-marca/70" : "text-tinta/45"}`}>{fechaHora(m.fechaEnvio)}</p>
                     </div>
                   </div>
                 );

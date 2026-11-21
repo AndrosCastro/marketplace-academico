@@ -3,6 +3,7 @@ import { usuarioActual } from "@/lib/sesion";
 import { prisma } from "@/lib/db";
 import { cerrarSesion } from "@/actions/auth";
 import { Avatar } from "./ui";
+import { LogoStudia } from "./Logo";
 import { SelectorTema } from "./SelectorTema";
 import { cookies } from "next/headers";
 
@@ -33,14 +34,8 @@ export async function Navbar() {
   return (
     <header className="sticky top-0 z-30 border-b border-tinta/10 bg-papel/85 backdrop-blur-md">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="Inicio">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-bosque-700 font-display text-lg font-bold text-mango-300 shadow-sm">
-            M
-          </span>
-          <span className="leading-tight">
-            <span className="block font-display text-[17px] font-semibold">Marketplace</span>
-            <span className="-mt-0.5 block text-[11px] font-bold tracking-[0.16em] text-bosque-700 uppercase">Académico</span>
-          </span>
+        <Link href="/" aria-label="studia, inicio">
+          <LogoStudia />
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">

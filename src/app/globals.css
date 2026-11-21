@@ -1,27 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-texto), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-titulo), ui-sans-serif, system-ui, sans-serif;
 
-  --color-tinta: #10231c;
-  --color-bosque-50: #effaf3;
-  --color-bosque-100: #d8f3e2;
-  --color-bosque-200: #b3e6c8;
-  --color-bosque-300: #80d2a6;
-  --color-bosque-400: #4cb780;
-  --color-bosque-500: #2a9b64;
-  --color-bosque-600: #1c7d50;
-  --color-bosque-700: #186442;
-  --color-bosque-800: #165037;
-  --color-bosque-900: #12422e;
-  --color-bosque-950: #08251a;
-  --color-mango-300: #ffd27a;
-  --color-mango-400: #ffbd45;
-  --color-mango-500: #f9a01b;
-  --color-papel: #fbfaf6;
+  --color-tinta: #1b2236;
+  --color-bosque-50: #fdf1f1;
+  --color-bosque-100: #fadadd;
+  --color-bosque-200: #f4b6bc;
+  --color-bosque-300: #ec8790;
+  --color-bosque-400: #e2525e;
+  --color-bosque-500: #db2b39;
+  --color-bosque-600: #db2b39;
+  --color-bosque-700: #c8202f;
+  --color-bosque-800: #8f1622;
+  --color-bosque-900: #1b2236;
+  --color-bosque-950: #141a2a;
+  --color-mango-300: #f8cf7a;
+  --color-mango-400: #f3b23b;
+  --color-mango-500: #e39b17;
+  --color-papel: #f8f2e7;
   --color-superficie: #ffffff;
-  --color-oscuro: #10231c; /* tinta fija para texto sobre amarillo */
+  --color-oscuro: #1b2236; /* tinta fija para texto sobre amarillo */
+  --color-sobre-marca: #ffffff; /* texto encima de botones rojos */
+  --color-exito-50: #eaf7ef;
+  --color-exito-100: #dcf3e5;
+  --color-exito-200: #b7e4c8;
+  --color-exito-800: #146c43;
 }
 
 
@@ -32,20 +37,25 @@
    --------------------------------------------------------------- */
 :root {
   color-scheme: light;
-  --grano: rgba(16, 35, 28, 0.07);
+  --grano: rgba(27, 34, 54, 0.07);
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
   --grano: rgba(255, 255, 255, 0.045);
-  --color-papel: #0b1310;
-  --color-superficie: #131d18;
-  --color-tinta: #e3ece7;
-  --color-bosque-50: #12221a;
-  --color-bosque-100: #173226;
-  --color-bosque-200: #21483a;
-  --color-bosque-300: #2d6b4d;
-  --color-bosque-700: #34a46d;
-  --color-bosque-800: #8fe0b5;
+  --color-papel: #0e1320;
+  --color-superficie: #161c2b;
+  --color-tinta: #e6e9f0;
+  --color-sobre-marca: #0e1320;
+  --color-bosque-50: #22161d;
+  --color-bosque-100: #3a1a22;
+  --color-bosque-200: #57252f;
+  --color-bosque-300: #7a333d;
+  --color-bosque-700: #f05a65;
+  --color-bosque-800: #f8a5ac;
+  --color-exito-50: #10241a;
+  --color-exito-100: #143022;
+  --color-exito-200: #1e4a33;
+  --color-exito-800: #8fe0b5;
   --color-amber-100: #3b2f10;
   --color-amber-800: #fcd34d;
   --color-sky-50: #0f2230;
@@ -75,15 +85,20 @@
   :root:not([data-theme="light"]) {
   color-scheme: dark;
   --grano: rgba(255, 255, 255, 0.045);
-  --color-papel: #0b1310;
-  --color-superficie: #131d18;
-  --color-tinta: #e3ece7;
-  --color-bosque-50: #12221a;
-  --color-bosque-100: #173226;
-  --color-bosque-200: #21483a;
-  --color-bosque-300: #2d6b4d;
-  --color-bosque-700: #34a46d;
-  --color-bosque-800: #8fe0b5;
+  --color-papel: #0e1320;
+  --color-superficie: #161c2b;
+  --color-tinta: #e6e9f0;
+  --color-sobre-marca: #0e1320;
+  --color-bosque-50: #22161d;
+  --color-bosque-100: #3a1a22;
+  --color-bosque-200: #57252f;
+  --color-bosque-300: #7a333d;
+  --color-bosque-700: #f05a65;
+  --color-bosque-800: #f8a5ac;
+  --color-exito-50: #10241a;
+  --color-exito-100: #143022;
+  --color-exito-200: #1e4a33;
+  --color-exito-800: #8fe0b5;
   --color-amber-100: #3b2f10;
   --color-amber-800: #fcd34d;
   --color-sky-50: #0f2230;
@@ -128,7 +143,7 @@
       disabled:cursor-not-allowed disabled:opacity-60;
   }
 @utility btn-primario {
-    @apply btn bg-bosque-700 text-white shadow-sm hover:bg-bosque-600 active:translate-y-px;
+    @apply btn bg-bosque-700 text-sobre-marca shadow-sm hover:bg-bosque-600 active:translate-y-px;
   }
 @utility btn-acento {
     @apply btn bg-mango-400 text-oscuro shadow-sm hover:bg-mango-500;
@@ -150,7 +165,7 @@
     @apply mb-1.5 block text-sm font-semibold text-tinta/80;
   }
 @utility tarjeta {
-    @apply rounded-2xl border border-tinta/10 bg-superficie shadow-[0_1px_0_rgba(16,35,28,0.04),0_8px_24px_-12px_rgba(16,35,28,0.12)];
+    @apply rounded-2xl border border-tinta/10 bg-superficie shadow-[0_1px_0_rgba(27,34,54,0.04),0_8px_24px_-12px_rgba(27,34,54,0.14)];
   }
 @utility chip {
     @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold;

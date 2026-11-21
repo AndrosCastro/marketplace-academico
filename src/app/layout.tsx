@@ -1,21 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
+import { DM_Sans, Bricolage_Grotesque } from "next/font/google";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { Navbar } from "@/components/Navbar";
 import "./globals.css";
 
-const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", display: "swap" });
-const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", display: "swap", weight: ["500", "600", "700"] });
+// Tipografía de la marca studia: DM Sans (textos) y Bricolage Grotesque (títulos y logo)
+const texto = DM_Sans({ subsets: ["latin"], variable: "--font-texto", display: "swap" });
+const titulo = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-titulo", display: "swap" });
 
 export const metadata: Metadata = {
-  title: { default: "Marketplace Académico · Servicios entre estudiantes", template: "%s · Marketplace Académico" },
+  title: { default: "studia · Marketplace Académico", template: "%s · studia" },
+  applicationName: "studia",
   description:
     "Publica, encuentra y solicita servicios entre estudiantes: tutorías, programación, diseño, proyectos y más, con reputación verificada por reseñas.",
   robots: { index: true, follow: true },
 };
 
-export const viewport: Viewport = { themeColor: "#186442", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#1B2236", width: "device-width", initialScale: 1 };
 
 // Todas las páginas dependen de la sesión: se renderizan en el servidor en cada petición.
 export const dynamic = "force-dynamic";
@@ -24,7 +26,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const tema = (await cookies()).get("tema")?.value;
   const dataTheme = tema === "oscuro" ? "dark" : tema === "claro" ? "light" : undefined;
   return (
-    <html lang="es" className={`${jakarta.variable} ${fraunces.variable}`} data-theme={dataTheme} suppressHydrationWarning>
+    <html lang="es" className={`${texto.variable} ${titulo.variable}`} data-theme={dataTheme} suppressHydrationWarning>
       <body className="flex min-h-dvh flex-col">
         <a href="#contenido" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-superficie focus:px-3 focus:py-2">
           Saltar al contenido
@@ -36,7 +38,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <footer className="mt-16 border-t border-tinta/10 bg-superficie/60">
           <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-tinta/60 sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <p>
-              <span className="font-semibold text-tinta">Marketplace Académico</span> · Ingeniería de Software I · Universidad Tecnológica de Honduras
+              <span className="font-display font-extrabold text-tinta">studia</span> · Marketplace Académico · Ingeniería de Software I · Universidad Tecnológica de Honduras
             </p>
             <div className="flex gap-4">
               <Link href="/normas" className="hover:text-tinta">

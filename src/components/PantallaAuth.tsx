@@ -1,10 +1,13 @@
+import { SimboloStudia } from "./Logo";
+
 export function PantallaAuth({ titulo, sub, children }: { titulo: string; sub: string; children: React.ReactNode }) {
   return (
     <div className="mx-auto grid min-h-[calc(100dvh-4rem)] max-w-6xl items-center gap-10 px-4 py-10 sm:px-6 lg:grid-cols-2">
       <div className="hidden lg:block">
         <div className="tarjeta fondo-grano relative overflow-hidden bg-bosque-900 p-10 text-white">
           <div className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-mango-400/30 blur-3xl" aria-hidden />
-          <p className="font-display text-4xl leading-tight font-semibold">“Lo que sabes hacer también puede ayudar a alguien más.”</p>
+          <SimboloStudia tam={84} className="mb-6" />
+          <p className="font-display text-4xl leading-tight font-bold">“Lo que sabes hacer también puede ayudar a alguien más.”</p>
           <ul className="mt-8 space-y-3 text-sm text-white/80">
             <li>🔒 Contraseñas cifradas y sesiones seguras</li>
             <li>⭐ Reputación basada en servicios completados</li>

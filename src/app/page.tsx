@@ -92,7 +92,7 @@ export default async function Inicio({ searchParams }: { searchParams: Promise<R
 
           <div className="grid grid-cols-2 gap-4 self-center">
             {[
-              ["95%", "considera útil la plataforma", "bg-bosque-700 text-white"],
+              ["95%", "considera útil la plataforma", "bg-bosque-700 text-sobre-marca"],
               ["85%", "revisa reseñas antes de contratar", "bg-superficie"],
               ["80%", "nunca había contratado una tutoría formal", "bg-superficie"],
               ["95%", "la usaría en su universidad", "bg-mango-400 text-oscuro"],
